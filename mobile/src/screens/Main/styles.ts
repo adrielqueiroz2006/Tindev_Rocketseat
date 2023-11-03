@@ -77,3 +77,49 @@ export const EmptyText = styled.Text`
   font-size: 24px;
   font-weight: bold;
 `
+
+export const MatchContainer = styled.View`
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+`
+
+export const MatchImage = styled.Image`
+  height: 60px;
+`
+
+export const MatchAvatar = styled.Image`
+  width: 160px;
+  height: 160px;
+  margin: 30px 0;
+`
+
+export const MatchName = styled.Text`
+  font-size: 26px;
+  font-weight: bold;
+  color: #fff;
+`
+
+export const MatchBio = styled.Text`
+  margin-top: 10px;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 24px;
+  text-align: center;
+  padding: 0 30px;
+`
+
+export const MatchCloseButton = styled.TouchableOpacity``
+
+export const MatchCloseButtonText = styled.Text`
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  margin-top: 30px;
+  font-weight: bold;
+`

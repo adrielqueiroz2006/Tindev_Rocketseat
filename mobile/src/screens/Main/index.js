@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react"
+import io from "socket.io-client"
 import {
   Card,
   CardBio,
@@ -13,6 +14,13 @@ import {
   Button,
   EmptyText,
   LogoButton,
+  MatchImage,
+  MatchAvatar,
+  MatchContainer,
+  MatchName,
+  MatchBio,
+  MatchCloseButton,
+  MatchCloseButtonText,
 } from "./styles"
 import { useNavigation, useRoute } from "@react-navigation/native"
 
@@ -22,6 +30,7 @@ import storage from "../../storage/storage"
 import logo from "../../assets/logo.png"
 import dislike from "../../assets/dislike.png"
 import like from "../../assets/like.png"
+import itsamatch from "../../assets/itsamatch.png"
 
 export default function Main() {
   const navigation = useNavigation()
@@ -29,6 +38,7 @@ export default function Main() {
   const { user: userid } = route.params
 
   const [users, setUsers] = useState([])
+  const [matchDev, setMatchDev] = useState(null)
 
   useEffect(() => {
     async function loadUsers() {
@@ -40,6 +50,16 @@ export default function Main() {
     }
 
     loadUsers()
+  }, [userid])
+
+  useEffect(() => {
+    const socket = io("http://localhost:3333", {
+      query: { user: userid },
+    })
+
+    socket.on("match", (dev) => {
+      setMatchDev(dev)
+    })
   }, [userid])
 
   async function handleLike() {
@@ -117,6 +137,24 @@ export default function Main() {
             <ButtonIcon source={like} />
           </Button>
         </ButtonsContainer>
+      )}
+
+      {matchDev && (
+        <MatchContainer style={{ zIndex: users.length }}>
+          <MatchImage source={itsamatch} style={{ resizeMode: "contain" }} />
+          <MatchAvatar
+            source={{ uri: matchDev.avatar }}
+            style={{ borderRadius: 80, borderWidth: 5, borderColor: "#FFF" }}
+          />
+
+          <MatchName>{matchDev.name}</MatchName>
+
+          <MatchBio>{matchDev.bio}</MatchBio>
+
+          <MatchCloseButton onPress={() => setMatchDev(null)}>
+            <MatchCloseButtonText>CLOSE</MatchCloseButtonText>
+          </MatchCloseButton>
+        </MatchContainer>
       )}
     </Container>
   )

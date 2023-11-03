@@ -17,7 +17,11 @@ export default function Login() {
 
     const { _id } = response.data
 
-    navigate(`/dev/${_id}`)
+    navigate(`/dev/${_id}`, {
+      state: {
+        loggedUser: response.data,
+      },
+    })
   }
 
   return (
