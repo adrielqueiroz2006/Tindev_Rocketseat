@@ -17,8 +17,8 @@ Exclusive and free program, promoted by Rocketseat for teaching Full-Stack techn
 
 <p align="center" >
   <img alt="Login - Tindev" src="./.github/preview1.png" width="100%">
-  <img alt="Main - Tindev" src="./.github/preview1.png" width="100%">
-  <img alt="It's A Match - Tindev " src="./.github/preview1.png" width="100%">
+  <img alt="Main - Tindev" src="./.github/preview2.png" width="100%">
+  <img alt="It's A Match - Tindev " src="./.github/preview3.png" width="100%">
 </p>
 
 ## 🚀 Technologies
